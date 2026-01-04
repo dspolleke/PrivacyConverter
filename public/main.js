@@ -6,6 +6,13 @@ function convertTwitter(url) {
 }
 
 /** @param {string} url: */
+function convertbluesky(url) {
+  const regex = /(.*\.\w{1,3})/;
+  const newUrl = url.replace(regex, "clearsky.app");
+  return newUrl;
+}
+
+/** @param {string} url: */
 function convertTiktok(url) {
   const regex = /(.*\.\w{1,3})/;
   const newUrl = url.replace(regex, "seetiktok.com");
@@ -50,8 +57,11 @@ function onInput(value) {
     case "x":
       setNewLink(convertTwitter(value));
       break;
-    case "tiktok":
+    case "tiktok"
       setNewLink(convertTiktok(value));
+      break;
+    case "bsky"
+      setNewLink(convertBluesky(value));
       break;
     case "instagram":
       setNewLink(convertInstagram(value));
